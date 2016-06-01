@@ -1,18 +1,25 @@
-<div class="page-header">
-  <h3>Friend #<%= @friend.id %></h3>
-</div>
-
 <div class="row">
-  <div class="col-md-12">
+  <div class="col-md-4 col-md-offset-4">
+    <div class="page-header">
+      <img class="img-responsive " src="<%= @friend.friend_photo %>">
+      <h3 class="text-center"><%= @friend.name %></h3>
+      <div class="btn-group btn-group-sm btn-group-justified">
+        <a href="/friends" class="btn btn-primary">
+          <i class="fa fa-arrow-left" aria-hidden="true"></i>
+        </a>
+        <a href="/friends/<%= @friend.id %>/edit" class="btn btn-warning">
+          <i class="fa fa-pencil" aria-hidden="true"></i>
+        </a>
+        <a href="/delete_friend/<%= @friend.id %>" class="btn btn-danger" rel="nofollow">
+          <i class="fa fa-trash" aria-hidden="true"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
     <dl class="dl-horizontal">
-      <dt>Name</dt>
-      <dd><%= @friend.name %></dd>
-
-      <dt>Friend photo</dt>
-      <dd><%= @friend.friend_photo %></dd>
-
-      <dt>User</dt>
-      <dd><%= @friend.user_id %></dd>
 
       <dt>Dislikes</dt>
       <dd><%= @friend.dislikes %></dd>
@@ -21,17 +28,52 @@
       <dd><%= @friend.likes %></dd>
 
     </dl>
+  </div>
+</div>
+<div class="row padding-inside-bottom-sm">
+  <div class="col-md-3 col-md-offset-3">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title text-center">Important Dates</h3>
+      </div>
+      <% @friend.important_dates.each do |date| %>
+      <div class="panel-body">
+        <a href="/important_dates/<%=date.id%>"><%=date.name%>: <%=date.date%></a>
+      </div>
+      <% end %>
+      <div class="panel-footer">
+        <h4 class="text-center">Add a new date</h4>
+        <form action="/create_important_date" method="post">
+          <!-- Hidden input for authenticity token to protect from forgery -->
+          <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+          <input type="hidden" name="friend_id" value="<%= @friend.id %>">
 
-    <div class="btn-group btn-group-justified">
-      <a href="/friends" class="btn btn-primary">
-        Back
-      </a>
-      <a href="/friends/<%= @friend.id %>/edit" class="btn btn-warning">
-        Edit
-      </a>
-      <a href="/delete_friend/<%= @friend.id %>" class="btn btn-danger" rel="nofollow">
-        Delete
-      </a>
+          <!-- Label and input for name -->
+          <div class="form-group">
+
+            <input type="text" id="name" name="name" placeholder="What's the occasion?" class="form-control"></textarea>
+          </div>
+
+          <!-- Label and input for date -->
+
+          <div class="form-group">
+
+            <input type="text" id="date" name="date" placeholder="Date" class="form-control"></textarea>
+          </div>
+
+          <button class="btn btn-success">
+            Add a new date
+          </button>
+          or
+          <a href="/important_dates">Cancel</a>
+        </form>
+      </div>
     </div>
+  </div>
+  <div class="col-md-3">
+    <h3 class="text-center">Holidays</h3>
+    <a class="btn btn-info btn-group-justified" role="button" href="/friends_holidays/new">
+      Add New Holiday
+    </a>
   </div>
 </div>

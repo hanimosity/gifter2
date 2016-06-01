@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 20160531211047) do
   end
 
   create_table "gifts", force: :cascade do |t|
+    t.integer  "user_id"
     t.integer  "important_date_id"
     t.integer  "friends_holiday_id"
     t.integer   "friend_id"

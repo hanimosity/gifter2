@@ -18,6 +18,23 @@
       <!-- Hidden input for authenticity token to protect from forgery -->
       <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
 
+      <!-- Label and input for name -->
+      <div class="form-group">
+        <label for="name" class="control-label">
+          Name
+        </label>
+
+        <input type="text" id="name" name="name" placeholder="Name" class="form-control" value="<%= @important_date.name %>">
+      </div>
+
+      <!-- Label and input for date -->
+      <div class="form-group">
+        <label for="date" class="control-label">
+          Date
+        </label>
+
+        <input type="text" id="date" name="date" placeholder="Date" class="form-control" value="<%= @important_date.date %>">
+      </div>
       <!-- Label and input for reminder -->
       <div class="form-group">
         <label for="reminder" class="control-label">
@@ -36,23 +53,6 @@
         <input type="text" id="friend_id" name="friend_id" placeholder="Friend" class="form-control" value="<%= @important_date.friend_id %>">
       </div>
 
-      <!-- Label and input for card -->
-      <div class="checkbox">
-        <label for="card">
-          <input type="checkbox" id="card" name="card" value="1" <%= "checked" if @important_date.card %>>
-          Card
-        </label>
-      </div>
-
-      <!-- Label and input for previous_gifts -->
-      <div class="form-group">
-        <label for="previous_gifts" class="control-label">
-          Previous gifts
-        </label>
-
-        <input type="text" id="previous_gifts" name="previous_gifts" placeholder="Previous gifts" class="form-control" value="<%= @important_date.previous_gifts %>">
-      </div>
-
       <!-- Label and input for traditions -->
       <div class="form-group">
         <label for="traditions" class="control-label">
@@ -62,22 +62,12 @@
         <input type="text" id="traditions" name="traditions" placeholder="Traditions" class="form-control" value="<%= @important_date.traditions %>">
       </div>
 
-      <!-- Label and input for name -->
-      <div class="form-group">
-        <label for="name" class="control-label">
-          Name
+      <!-- Label and input for card -->
+      <div class="checkbox">
+        <label for="card">
+          <input type="checkbox" id="card" name="card" value="1" <%= "checked" if @important_date.card %>>
+          Send Card?
         </label>
-
-        <input type="text" id="name" name="name" placeholder="Name" class="form-control" value="<%= @important_date.name %>">
-      </div>
-
-      <!-- Label and input for date -->
-      <div class="form-group">
-        <label for="date" class="control-label">
-          Date
-        </label>
-
-        <input type="text" id="date" name="date" placeholder="Date" class="form-control" value="<%= @important_date.date %>">
       </div>
 
       <button class="btn btn-success">
