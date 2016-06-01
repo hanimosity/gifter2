@@ -1,0 +1,73 @@
+<!-- Validation failure messages -->
+<% if @gift.errors.any? %>
+  <% @gift.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Add Gift</h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/create_gift" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for important_date_id -->
+      <div class="form-group">
+        <label for="important_date_id" class="control-label">
+          Important date
+        </label>
+
+        <input type="text" id="important_date_id" name="important_date_id" placeholder="Important date" class="form-control" value="<%= @gift.important_date_id %>">
+      </div>
+
+      <!-- Label and input for friends_holiday_id -->
+      <div class="form-group">
+        <label for="friends_holiday_id" class="control-label">
+          Friends holiday
+        </label>
+
+        <input type="text" id="friends_holiday_id" name="friends_holiday_id" placeholder="Friends holiday" class="form-control" value="<%= @gift.friends_holiday_id %>">
+      </div>
+
+      <!-- Label and input for year_given -->
+      <div class="form-group">
+        <label for="year_given" class="control-label">
+          Year given
+        </label>
+
+        <input type="text" id="year_given" name="year_given" placeholder="Year given" class="form-control" value="<%= @gift.year_given %>">
+      </div>
+
+      <!-- Label and input for description -->
+      <div class="form-group">
+        <label for="description" class="control-label">
+          Description
+        </label>
+
+        <textarea id="description" name="description" placeholder="Description" class="form-control" rows="3"><%= @gift.description %></textarea>
+      </div>
+
+      <!-- Label and input for name -->
+      <div class="form-group">
+        <label for="name" class="control-label">
+          Name
+        </label>
+
+        <input type="text" id="name" name="name" placeholder="Name" class="form-control" value="<%= @gift.name %>">
+      </div>
+
+      <button class="btn btn-success">
+        Create Gift
+      </button>
+      or
+      <a href="/gifts">Cancel</a>
+    </form>
+  </div>
+</div>

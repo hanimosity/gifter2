@@ -1,0 +1,37 @@
+<div class="page-header">
+  <h3>Friend #<%= @friend.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <dl class="dl-horizontal">
+      <dt>Name</dt>
+      <dd><%= @friend.name %></dd>
+
+      <dt>Friend photo</dt>
+      <dd><%= @friend.friend_photo %></dd>
+
+      <dt>User</dt>
+      <dd><%= @friend.user_id %></dd>
+
+      <dt>Dislikes</dt>
+      <dd><%= @friend.dislikes %></dd>
+
+      <dt>Likes</dt>
+      <dd><%= @friend.likes %></dd>
+
+    </dl>
+
+    <div class="btn-group btn-group-justified">
+      <a href="/friends" class="btn btn-primary">
+        Back
+      </a>
+      <a href="/friends/<%= @friend.id %>/edit" class="btn btn-warning">
+        Edit
+      </a>
+      <a href="/delete_friend/<%= @friend.id %>" class="btn btn-danger" rel="nofollow">
+        Delete
+      </a>
+    </div>
+  </div>
+</div>

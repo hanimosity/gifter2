@@ -1,0 +1,63 @@
+<!-- Validation failure messages -->
+<% if @friends_holiday.errors.any? %>
+  <% @friends_holiday.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Add Friends Holiday</h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/create_friends_holiday" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for card -->
+      <div class="checkbox">
+        <label for="card">
+          <input type="checkbox" id="card" name="card" value="1" <%= "checked" if @friends_holiday.card %>>
+          Card
+        </label>
+      </div>
+
+      <!-- Label and input for reminder -->
+      <div class="form-group">
+        <label for="reminder" class="control-label">
+          Reminder
+        </label>
+
+        <input type="text" id="reminder" name="reminder" placeholder="Reminder" class="form-control" value="<%= @friends_holiday.reminder %>">
+      </div>
+
+      <!-- Label and input for friend_id -->
+      <div class="form-group">
+        <label for="friend_id" class="control-label">
+          Friend
+        </label>
+
+        <input type="text" id="friend_id" name="friend_id" placeholder="Friend" class="form-control" value="<%= @friends_holiday.friend_id %>">
+      </div>
+
+      <!-- Label and input for holiday_id -->
+      <div class="form-group">
+        <label for="holiday_id" class="control-label">
+          Holiday
+        </label>
+
+        <input type="text" id="holiday_id" name="holiday_id" placeholder="Holiday" class="form-control" value="<%= @friends_holiday.holiday_id %>">
+      </div>
+
+      <button class="btn btn-success">
+        Create Friends Holiday
+      </button>
+      or
+      <a href="/friends_holidays">Cancel</a>
+    </form>
+  </div>
+</div>

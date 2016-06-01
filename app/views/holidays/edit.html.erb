@@ -1,0 +1,55 @@
+<!-- Validation failure messages -->
+<% if @holiday.errors.any? %>
+  <% @holiday.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Edit Holiday #<%= @holiday.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/update_holiday/<%= @holiday.id %>" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for name -->
+      <div class="form-group">
+        <label for="name" class="control-label">
+          Name
+        </label>
+
+        <input type="text" id="name" name="name" placeholder="Name" class="form-control" value="<%= @holiday.name %>">
+      </div>
+
+      <!-- Label and input for date -->
+      <div class="form-group">
+        <label for="date" class="control-label">
+          Date
+        </label>
+
+        <input type="text" id="date" name="date" placeholder="Date" class="form-control" value="<%= @holiday.date %>">
+      </div>
+
+      <!-- Label and input for traditions -->
+      <div class="form-group">
+        <label for="traditions" class="control-label">
+          Traditions
+        </label>
+
+        <input type="text" id="traditions" name="traditions" placeholder="Traditions" class="form-control" value="<%= @holiday.traditions %>">
+      </div>
+
+      <button class="btn btn-warning">
+        Update Holiday
+      </button>
+      or
+      <a href="/holidays/<%= @holiday.id %>">Cancel</a>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,31 @@
+<div class="page-header">
+  <h3>Holiday #<%= @holiday.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <dl class="dl-horizontal">
+      <dt>Name</dt>
+      <dd><%= @holiday.name %></dd>
+
+      <dt>Date</dt>
+      <dd><%= @holiday.date %></dd>
+
+      <dt>Traditions</dt>
+      <dd><%= @holiday.traditions %></dd>
+
+    </dl>
+
+    <div class="btn-group btn-group-justified">
+      <a href="/holidays" class="btn btn-primary">
+        Back
+      </a>
+      <a href="/holidays/<%= @holiday.id %>/edit" class="btn btn-warning">
+        Edit
+      </a>
+      <a href="/delete_holiday/<%= @holiday.id %>" class="btn btn-danger" rel="nofollow">
+        Delete
+      </a>
+    </div>
+  </div>
+</div>
