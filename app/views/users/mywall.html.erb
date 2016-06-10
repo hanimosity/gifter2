@@ -1,24 +1,30 @@
 <div>
-  <div class="col-md-8 col-md-offset-2 padding-inside-top-md padding-inside-bottom-md">
+  <div class="col-md-4 col-md-offset-4 padding-inside-top-md">
+    <img class="img-responsive mywallphoto text-center" src="<%=current_user.photo%>">
     <h3><%= current_user.username %></h3>
   </div>
-  <div class="col-md-8 col-md-offset-2 padding-inside-top-md padding-inside-bottom-md">
+  <div class="col-md-8 col-md-offset-2 padding-inside-top-md">
     <h3 class="text-center">Reminders</h3>
   </div>
-  <div class="col-md-4 col-md-offset-2 padding-inside-top-md padding-inside-bottom-md">
-    <% current_user.friends_dates.each do |date| %>
-      <%if @range === date.reminder%>
-      <dt><%=date.important_date.name%></dt>
-      <dd><%=date.date.to_s %></dd>
-      <%end%>
+  <div class="col-md-4 col-md-offset-2 padding-inside-bottom-md">
+    <h4>Important Dates</h4>
+    <% current_user.friends.each do |friend| %>
+      <% friend.friends_dates.each do |date| %>
+        <%if @range === date.reminder%>
+          <p><a href="/friends/<%=friend.id%>"><%=friend.name%></a>'s <%=date.important_date.name%> on <%=date.date %></p>
+          <%end%>
+        <%end%>
     <%end%>
   </div>
-  <div class="col-md-4 col-md-offset-2 padding-inside-top-md padding-inside-bottom-md">
-    <% current_user.friends_holidays.each do |date| %>
-      <%if @range === date.reminder%>
-      <dt><%=date.name%></dt>
-      <dd><%=date.date %></dd>
+  <div class="col-md-4 col padding-inside-bottom-m">
+    <dl class="dl-horizontal">
+      <h4>Holidays</h4>
+      <% current_user.friends_holidays.each do |date| %>
+        <%if @range === date.reminder%>
+        <dt><%=date.name%></dt>
+        <dd><%=date.date %></dd>
+        <%end%>
       <%end%>
-    <%end%>
+    </dl>
   </div>
 </div>
