@@ -5,5 +5,5 @@ class FriendsHoliday < ActiveRecord::Base
 
   belongs_to :friend
   belongs_to :holiday
-  has_many :gifts
+  has_many :gifts, :dependent => :destroy
 end

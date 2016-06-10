@@ -2,7 +2,6 @@ class HolidaysController < ApplicationController
 
   def index
       @holidays = Holiday.all
-
   end
 
   def show
@@ -42,7 +41,7 @@ class HolidaysController < ApplicationController
     @holiday.traditions = params[:traditions]
 
     if @holiday.save
-      redirect_to "/holidays", :notice => "Holiday updated successfully."
+      redirect_to :back, :notice => "Holiday updated successfully."
     else
       render 'edit'
     end
@@ -53,6 +52,6 @@ class HolidaysController < ApplicationController
 
     @holiday.destroy
 
-    redirect_to "/holidays", :notice => "Holiday deleted."
+    redirect_to :back, :notice => "Holiday deleted."
   end
 end

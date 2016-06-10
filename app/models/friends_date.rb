@@ -6,5 +6,5 @@ class FriendsDate < ActiveRecord::Base
 
   belongs_to :friend
   belongs_to :important_date
-  has_many :gifts
+  has_many :gifts, :dependent => :destroy
 end
