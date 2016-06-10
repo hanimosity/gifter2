@@ -18,13 +18,22 @@
       <!-- Hidden input for authenticity token to protect from forgery -->
       <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
 
-      <!-- Label and input for important_date_id -->
+      <!-- Label and input for friend_id -->
       <div class="form-group">
-        <label for="important_date_id" class="control-label">
-          Important date
+        <label for="friend_id" class="control-label">
+          Friend
         </label>
 
-        <input type="text" id="important_date_id" name="important_date_id" placeholder="Important date" class="form-control" value="<%= @gift.important_date_id %>">
+        <input type="text" id="friend_id" name="friend_id" placeholder="Friend" class="form-control" value="<%= @gift.friend_id %>">
+      </div>
+
+      <!-- Label and input for friends_date_id -->
+      <div class="form-group">
+        <label for="friends_date_id" class="control-label">
+          Friends date
+        </label>
+
+        <input type="text" id="friends_date_id" name="friends_date_id" placeholder="Friends date" class="form-control" value="<%= @gift.friends_date_id %>">
       </div>
 
       <!-- Label and input for friends_holiday_id -->
@@ -61,6 +70,15 @@
         </label>
 
         <input type="text" id="name" name="name" placeholder="Name" class="form-control" value="<%= @gift.name %>">
+      </div>
+
+      <!-- Label and input for user_id -->
+      <div class="form-group">
+        <label for="user_id" class="control-label">
+          User
+        </label>
+
+        <input type="text" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= @gift.user_id %>">
       </div>
 
       <button class="btn btn-success">

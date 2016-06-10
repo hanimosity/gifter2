@@ -27,49 +27,6 @@
         <input type="text" id="name" name="name" placeholder="Name" class="form-control" value="<%= @important_date.name %>">
       </div>
 
-      <!-- Label and input for date -->
-      <div class="form-group">
-        <label for="date" class="control-label">
-          Date
-        </label>
-
-        <input type="text" id="date" name="date" placeholder="Date" class="form-control" value="<%= @important_date.date %>">
-      </div>
-      <!-- Label and input for reminder -->
-      <div class="form-group">
-        <label for="reminder" class="control-label">
-          Reminder
-        </label>
-
-        <input type="text" id="reminder" name="reminder" placeholder="Reminder" class="form-control" value="<%= @important_date.reminder %>">
-      </div>
-
-      <!-- Label and input for friend_id -->
-      <div class="form-group">
-        <label for="friend_id" class="control-label">
-          Friend
-        </label>
-
-        <input type="text" id="friend_id" name="friend_id" placeholder="Friend" class="form-control" value="<%= @important_date.friend_id %>">
-      </div>
-
-      <!-- Label and input for traditions -->
-      <div class="form-group">
-        <label for="traditions" class="control-label">
-          Traditions
-        </label>
-
-        <input type="text" id="traditions" name="traditions" placeholder="Traditions" class="form-control" value="<%= @important_date.traditions %>">
-      </div>
-
-      <!-- Label and input for card -->
-      <div class="checkbox">
-        <label for="card">
-          <input type="checkbox" id="card" name="card" value="1" <%= "checked" if @important_date.card %>>
-          Send Card?
-        </label>
-      </div>
-
       <button class="btn btn-success">
         Create Important Date
       </button>

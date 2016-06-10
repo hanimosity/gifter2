@@ -22,11 +22,11 @@
 
       <!-- Label and input for friend_photo -->
       <div class="form-group">
-        <label for="friend_photo" class="control-label">
-          Friend photo
+        <label for="photo" class="control-label">
+          Face
         </label>
 
-        <input type="text" id="friend_photo" name="friend_photo" placeholder="Friend photo" class="form-control" value="<%= @friend.friend_photo %>">
+        <input type="text" id="photo" name="photo" placeholder="Image URL" class="form-control" value="<%= @friend.photo %>">
       </div>
 
       <!-- Label and input for name -->
@@ -38,15 +38,6 @@
         <input type="text" id="name" name="name" placeholder="Name" class="form-control" value="<%= @friend.name %>">
       </div>
 
-      <!-- Label and input for dislikes -->
-      <div class="form-group">
-        <label for="dislikes" class="control-label">
-          Dislikes
-        </label>
-
-        <input type="text" id="dislikes" name="dislikes" placeholder="Dislikes" class="form-control" value="<%= @friend.dislikes %>">
-      </div>
-
       <!-- Label and input for likes -->
       <div class="form-group">
         <label for="likes" class="control-label">
@@ -54,6 +45,15 @@
         </label>
 
         <input type="text" id="likes" name="likes" placeholder="Likes" class="form-control" value="<%= @friend.likes %>">
+      </div>
+
+      <!-- Label and input for dislikes -->
+      <div class="form-group">
+        <label for="dislikes" class="control-label">
+          Dislikes
+        </label>
+
+        <input type="text" id="dislikes" name="dislikes" placeholder="Dislikes" class="form-control" value="<%= @friend.dislikes %>">
       </div>
 
       <button class="btn btn-warning">

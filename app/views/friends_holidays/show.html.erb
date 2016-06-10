@@ -1,34 +1,82 @@
-<div class="page-header">
-  <h3>Friends Holiday #<%= @friends_holiday.id %></h3>
-</div>
-
 <div class="row">
-  <div class="col-md-12">
+  <div class="col-md-6 col-md-offset-3">
+    <div class="page-header">
+      <h3 class="text-center"><%= @friends_holiday.friend.name %>'s <%= @friends_holiday.holiday.name %> Details</h3>
+      <div class="btn-group btn-group-justified">
+        <a href="/friends/<%=@friends_holiday.friend_id%>" class="btn btn-primary">
+          <i class="fa fa-arrow-left" aria-hidden="true"></i>
+        </a>
+        <a href="/friends_holidays/<%= @friends_holiday.id %>/edit" class="btn btn-warning">
+          <i class="fa fa-pencil" aria-hidden="true"></i>
+        </a>
+        <a href="/delete_friends_holiday/<%= @friends_holiday.id %>" class="btn btn-danger" rel="nofollow">
+          <i class="fa fa-trash" aria-hidden="true"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
     <dl class="dl-horizontal">
-      <dt>Card</dt>
-      <dd><%= @friends_holiday.card %></dd>
 
       <dt>Reminder</dt>
       <dd><%= @friends_holiday.reminder %></dd>
 
-      <dt>Friend</dt>
-      <dd><%= @friends_holiday.friend_id %></dd>
-
-      <dt>Holiday</dt>
-      <dd><%= @friends_holiday.holiday_id %></dd>
-
+      <dt>Previous Gifts</dt>
+      <dd>
+        <% @friends_holiday.gifts.each do |gift| %>
+          <p><%=gift.name%></p><br>
+        <%end%>
+        </ul>
     </dl>
 
-    <div class="btn-group btn-group-justified">
-      <a href="/friends_holidays" class="btn btn-primary">
-        Back
-      </a>
-      <a href="/friends_holidays/<%= @friends_holiday.id %>/edit" class="btn btn-warning">
-        Edit
-      </a>
-      <a href="/delete_friends_holiday/<%= @friends_holiday.id %>" class="btn btn-danger" rel="nofollow">
-        Delete
-      </a>
-    </div>
+
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <h3 class="text-center">Add a Gift</h3>
+    <form action="/create_gift" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+      <input type="hidden" name="friends_holiday_id" value="<%= @friends_holiday.id %>">
+      <input type="hidden" name="friend_id" value="<%= @friends_holiday.friend_id %>">
+      <input type="hidden" name="user_id" value="<%= current_user.id %>">
+
+      <!-- Label and input for name -->
+      <div class="form-group">
+        <label for="name" class="control-label">
+          What was it?
+        </label>
+
+        <input type="text" id="name" name="name" placeholder="Name" class="form-control" value="<%= @gift.name %>">
+      </div>
+
+      <!-- Label and input for year_given -->
+      <div class="form-group">
+        <label for="year_given" class="control-label">
+          When did you give it?
+        </label>
+
+        <input type="text" id="year_given" name="year_given" placeholder="Year given" class="form-control" value="<%= @gift.year_given %>">
+      </div>
+
+      <!-- Label and input for description -->
+      <div class="form-group">
+        <label for="description" class="control-label">
+          Details
+        </label>
+
+        <textarea id="description" name="description" placeholder="Description" class="form-control" rows="3"><%= @gift.description %></textarea>
+      </div>
+
+
+      <button class="btn btn-success">
+        Add Gift
+      </button>
+      or
+      <a href="/gifts">Cancel</a>
+    </form>
   </div>
 </div>

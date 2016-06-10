@@ -1,6 +1,8 @@
 class HolidaysController < ApplicationController
+
   def index
-    @holidays = Holiday.all
+      @holidays = Holiday.all
+
   end
 
   def show
@@ -14,11 +16,15 @@ class HolidaysController < ApplicationController
   def create
     @holiday = Holiday.new
     @holiday.name = params[:name]
+    date = params[:date]
+    current_year = Date.today.year
+    @holiday.date = date+" "+current_year.to_s
+    @holiday.date = @holiday.date.to_date
     @holiday.date = params[:date]
     @holiday.traditions = params[:traditions]
 
     if @holiday.save
-      redirect_to "/holidays", :notice => "Holiday created successfully."
+      redirect_to :back, :notice => "Holiday created successfully."
     else
       render 'new'
     end

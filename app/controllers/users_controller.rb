@@ -3,8 +3,12 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
-  def show
-    @user = User.find(params[:id])
+  def mywall
+    @user = current_user.id
+    from=Date.today
+    to=from+30
+    @range=from..to
   end
+
 
 end

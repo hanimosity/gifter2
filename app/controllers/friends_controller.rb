@@ -5,6 +5,8 @@ class FriendsController < ApplicationController
 
   def show
     @friend = Friend.find(params[:id])
+    @friends_holiday = FriendsHoliday.new
+    @friends_date = FriendsDate.new
   end
 
   def new
@@ -14,7 +16,7 @@ class FriendsController < ApplicationController
   def create
     @friend = Friend.new
     @friend.user_id = params[:user_id]
-    @friend.friend_photo = params[:friend_photo]
+    @friend.photo = params[:photo]
     @friend.dislikes = params[:dislikes]
     @friend.name = params[:name]
     @friend.likes = params[:likes]
@@ -34,7 +36,7 @@ class FriendsController < ApplicationController
     @friend = Friend.find(params[:id])
 
     @friend.user_id = params[:user_id]
-    @friend.friend_photo = params[:friend_photo]
+    @friend.photo = params[:photo]
     @friend.dislikes = params[:dislikes]
     @friend.name = params[:name]
     @friend.likes = params[:likes]

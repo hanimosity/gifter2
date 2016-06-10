@@ -11,80 +11,63 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160531211047) do
-
-  create_table "comments", force: :cascade do |t|
-    t.text     "body"
-    t.integer  "photo_id"
-    t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
+ActiveRecord::Schema.define(version: 20160610000139) do
 
   create_table "friends", force: :cascade do |t|
     t.integer  "user_id"
-    t.string   "friend_photo"
+    t.string   "photo"
     t.string   "dislikes"
     t.string   "name"
     t.string   "likes"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "holiday_id"
+  end
+
+  create_table "friends_dates", force: :cascade do |t|
+    t.text     "description"
+    t.text     "traditions"
+    t.string   "reminder"
+    t.date     "date"
+    t.integer  "important_date_id"
+    t.integer  "friend_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "friends_holidays", force: :cascade do |t|
-    t.boolean  "card"
-    t.date     "reminder"
+    t.text     "traditions"
+    t.string   "reminder"
     t.integer  "friend_id"
     t.integer  "holiday_id"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "gifts", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "important_date_id"
+    t.string   "friend_id"
+    t.integer  "friends_date_id"
     t.integer  "friends_holiday_id"
-    t.integer   "friend_id"
     t.integer  "year_given"
     t.text     "description"
     t.string   "name"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "holidays", force: :cascade do |t|
     t.string   "name"
-    t.date     "date"
+    t.string     "date"
     t.string   "traditions"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "important_dates", force: :cascade do |t|
-    t.date     "reminder"
-    t.integer  "friend_id"
-    t.boolean  "card"
-    t.string   "previous_gifts"
-    t.string   "traditions"
     t.string   "name"
-    t.date     "date"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "likes", force: :cascade do |t|
-    t.integer  "photo_id"
-    t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "photos", force: :cascade do |t|
-    t.integer  "friend_id"
-    t.integer  "user_id"
-    t.integer  "gift_id"
-    t.text     "caption"
-    t.string   "image"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -100,7 +83,7 @@ ActiveRecord::Schema.define(version: 20160531211047) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.string   "avatar"
+    t.string   "photo"
     t.string   "username"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false

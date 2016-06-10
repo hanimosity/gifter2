@@ -5,6 +5,7 @@ class FriendsHolidaysController < ApplicationController
 
   def show
     @friends_holiday = FriendsHoliday.find(params[:id])
+    @gift = Gift.new
   end
 
   def new
@@ -13,13 +14,14 @@ class FriendsHolidaysController < ApplicationController
 
   def create
     @friends_holiday = FriendsHoliday.new
-    @friends_holiday.card = params[:card]
+    @friends_holiday.traditions = params[:traditions]
     @friends_holiday.reminder = params[:reminder]
     @friends_holiday.friend_id = params[:friend_id]
     @friends_holiday.holiday_id = params[:holiday_id]
+    @friends_holiday.user_id = params[:user_id]
 
     if @friends_holiday.save
-      redirect_to "/friends_holidays", :notice => "Friends holiday created successfully."
+      redirect_to :back, :notice => "Friends holiday created successfully."
     else
       render 'new'
     end
@@ -32,13 +34,14 @@ class FriendsHolidaysController < ApplicationController
   def update
     @friends_holiday = FriendsHoliday.find(params[:id])
 
-    @friends_holiday.card = params[:card]
+    @friends_holiday.traditions = params[:traditions]
     @friends_holiday.reminder = params[:reminder]
     @friends_holiday.friend_id = params[:friend_id]
     @friends_holiday.holiday_id = params[:holiday_id]
+    @friends_holiday.user_id = params[:user_id]
 
     if @friends_holiday.save
-      redirect_to "/friends_holidays", :notice => "Friends holiday updated successfully."
+      redirect_to :back, :notice => "Friends holiday updated successfully."
     else
       render 'edit'
     end

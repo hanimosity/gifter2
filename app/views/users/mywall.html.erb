@@ -1,0 +1,24 @@
+<div>
+  <div class="col-md-8 col-md-offset-2 padding-inside-top-md padding-inside-bottom-md">
+    <h3><%= current_user.username %></h3>
+  </div>
+  <div class="col-md-8 col-md-offset-2 padding-inside-top-md padding-inside-bottom-md">
+    <h3 class="text-center">Reminders</h3>
+  </div>
+  <div class="col-md-4 col-md-offset-2 padding-inside-top-md padding-inside-bottom-md">
+    <% current_user.friends_dates.each do |date| %>
+      <%if @range === date.reminder%>
+      <dt><%=date.important_date.name%></dt>
+      <dd><%=date.date.to_s %></dd>
+      <%end%>
+    <%end%>
+  </div>
+  <div class="col-md-4 col-md-offset-2 padding-inside-top-md padding-inside-bottom-md">
+    <% current_user.friends_holidays.each do |date| %>
+      <%if @range === date.reminder%>
+      <dt><%=date.name%></dt>
+      <dd><%=date.date %></dd>
+      <%end%>
+    <%end%>
+  </div>
+</div>

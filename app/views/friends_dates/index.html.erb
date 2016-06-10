@@ -1,0 +1,40 @@
+<div class="page-header">
+  <h1>
+    Friends dates
+    <a href="/friends_dates/new" class="btn btn-lg btn-success">New Friends date</a>
+  </h1>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-striped table-hover">
+      <tr>
+        <th>Description</th>
+        <th>Traditions</th>
+        <th>Reminder</th>
+        <th>Date</th>
+        <th>Important date</th>
+        <th>Friend</th>
+        <th>User</th>
+        <th>Actions</th>
+      </tr>
+
+      <% @friends_dates.each do |friends_date| %>
+      <tr>
+        <td><%= friends_date.description %></td>
+        <td><%= friends_date.traditions %></td>
+        <td><%= friends_date.reminder %></td>
+        <td><%= friends_date.date %></td>
+        <td><%= friends_date.important_date_id %></td>
+        <td><%= friends_date.friend_id %></td>
+        <td><%= friends_date.user_id %></td>
+        <td>
+          <a href="/friends_dates/<%= friends_date.id %>" class="btn btn-primary">Show</a>
+          <a href="/friends_dates/<%= friends_date.id %>/edit" class="btn btn-warning">Edit</a>
+          <a href="/delete_friends_date/<%= friends_date.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

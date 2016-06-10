@@ -1,17 +1,8 @@
 Rails.application.routes.draw do
+
   devise_for :users
-
-  root "friends#index"
-
-  # Routes for the Users resource:
-  # READ
-  get "/users", :controller => "users", :action => "index"
-  get "/users/:id", :controller => "users", :action => "show"
-  get "/users/my_likes", :controller => "users", :action => "likes"
-
-  # DELETE
-  get "/delete_comment/:id", :controller => "users", :action => "destroy"
-
+  
+  get "/", :controller => "users", :action => "mywall"
   # Routes for the Friends_holiday resource:
   # CREATE
   get "/friends_holidays/new", :controller => "friends_holidays", :action => "new"
@@ -80,23 +71,6 @@ Rails.application.routes.draw do
   get "/delete_friend/:id", :controller => "friends", :action => "destroy"
   #------------------------------
 
-  # Routes for the Photo resource:
-  # CREATE
-  get "/photos/new", :controller => "photos", :action => "new"
-  post "/create_photo", :controller => "photos", :action => "create"
-
-  # READ
-  get "/photos", :controller => "photos", :action => "index"
-  get "/photos/:id", :controller => "photos", :action => "show"
-
-  # UPDATE
-  get "/photos/:id/edit", :controller => "photos", :action => "edit"
-  post "/update_photo/:id", :controller => "photos", :action => "update"
-
-  # DELETE
-  get "/delete_photo/:id", :controller => "photos", :action => "destroy"
-  #------------------------------
-
   # Routes for the Gift resource:
   # CREATE
   get "/gifts/new", :controller => "gifts", :action => "new"
@@ -114,38 +88,21 @@ Rails.application.routes.draw do
   get "/delete_gift/:id", :controller => "gifts", :action => "destroy"
   #------------------------------
 
-  # Routes for the Like resource:
+  # Routes for the Friends_date resource:
   # CREATE
-  get "/likes/new", :controller => "likes", :action => "new"
-  post "/create_like", :controller => "likes", :action => "create"
+  get "/friends_dates/new", :controller => "friends_dates", :action => "new"
+  post "/create_friends_date", :controller => "friends_dates", :action => "create"
 
   # READ
-  get "/likes", :controller => "likes", :action => "index"
-  get "/likes/:id", :controller => "likes", :action => "show"
+  get "/friends_dates", :controller => "friends_dates", :action => "index"
+  get "/friends_dates/:id", :controller => "friends_dates", :action => "show"
 
   # UPDATE
-  get "/likes/:id/edit", :controller => "likes", :action => "edit"
-  post "/update_like/:id", :controller => "likes", :action => "update"
+  get "/friends_dates/:id/edit", :controller => "friends_dates", :action => "edit"
+  post "/update_friends_date/:id", :controller => "friends_dates", :action => "update"
 
   # DELETE
-  get "/delete_like/:id", :controller => "likes", :action => "destroy"
-  #------------------------------
-
-  # Routes for the Comment resource:
-  # CREATE
-  get "/comments/new", :controller => "comments", :action => "new"
-  post "/create_comment", :controller => "comments", :action => "create"
-
-  # READ
-  get "/comments", :controller => "comments", :action => "index"
-  get "/comments/:id", :controller => "comments", :action => "show"
-
-  # UPDATE
-  get "/comments/:id/edit", :controller => "comments", :action => "edit"
-  post "/update_comment/:id", :controller => "comments", :action => "update"
-
-  # DELETE
-  get "/delete_comment/:id", :controller => "comments", :action => "destroy"
+  get "/delete_friends_date/:id", :controller => "friends_dates", :action => "destroy"
   #------------------------------
 
 

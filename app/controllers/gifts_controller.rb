@@ -13,14 +13,16 @@ class GiftsController < ApplicationController
 
   def create
     @gift = Gift.new
-    @gift.important_date_id = params[:important_date_id]
+    @gift.friend_id = params[:friend_id]
+    @gift.friends_date_id = params[:friends_date_id]
     @gift.friends_holiday_id = params[:friends_holiday_id]
     @gift.year_given = params[:year_given]
     @gift.description = params[:description]
     @gift.name = params[:name]
+    @gift.user_id = params[:user_id]
 
     if @gift.save
-      redirect_to "/gifts", :notice => "Gift created successfully."
+      redirect_to :back, :notice => "Gift created successfully."
     else
       render 'new'
     end
@@ -33,11 +35,13 @@ class GiftsController < ApplicationController
   def update
     @gift = Gift.find(params[:id])
 
-    @gift.important_date_id = params[:important_date_id]
+    @gift.friend_id = params[:friend_id]
+    @gift.friends_date_id = params[:friends_date_id]
     @gift.friends_holiday_id = params[:friends_holiday_id]
     @gift.year_given = params[:year_given]
     @gift.description = params[:description]
     @gift.name = params[:name]
+    @gift.user_id = params[:user_id]
 
     if @gift.save
       redirect_to "/gifts", :notice => "Gift updated successfully."

@@ -1,0 +1,91 @@
+<!-- Validation failure messages -->
+<% if @friends_date.errors.any? %>
+  <% @friends_date.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Add Friends Date</h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/create_friends_date" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for description -->
+      <div class="form-group">
+        <label for="description" class="control-label">
+          Description
+        </label>
+
+        <textarea id="description" name="description" placeholder="Description" class="form-control" rows="3"><%= @friends_date.description %></textarea>
+      </div>
+
+      <!-- Label and input for traditions -->
+      <div class="form-group">
+        <label for="traditions" class="control-label">
+          Traditions
+        </label>
+
+        <textarea id="traditions" name="traditions" placeholder="Traditions" class="form-control" rows="3"><%= @friends_date.traditions %></textarea>
+      </div>
+
+      <!-- Label and input for reminder -->
+      <div class="form-group">
+        <label for="reminder" class="control-label">
+          Reminder
+        </label>
+
+        <input type="text" id="reminder" name="reminder" placeholder="Reminder" class="form-control" value="<%= @friends_date.reminder %>">
+      </div>
+
+      <!-- Label and input for date -->
+      <div class="form-group">
+        <label for="date" class="control-label">
+          Date
+        </label>
+
+        <input type="text" id="date" name="date" placeholder="Date" class="form-control" value="<%= @friends_date.date %>">
+      </div>
+
+      <!-- Label and input for important_date_id -->
+      <div class="form-group">
+        <label for="important_date_id" class="control-label">
+          Important date
+        </label>
+
+        <input type="text" id="important_date_id" name="important_date_id" placeholder="Important date" class="form-control" value="<%= @friends_date.important_date_id %>">
+      </div>
+
+      <!-- Label and input for friend_id -->
+      <div class="form-group">
+        <label for="friend_id" class="control-label">
+          Friend
+        </label>
+
+        <input type="text" id="friend_id" name="friend_id" placeholder="Friend" class="form-control" value="<%= @friends_date.friend_id %>">
+      </div>
+
+      <!-- Label and input for user_id -->
+      <div class="form-group">
+        <label for="user_id" class="control-label">
+          User
+        </label>
+
+        <input type="text" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= @friends_date.user_id %>">
+      </div>
+
+      <button class="btn btn-success">
+        Create Friends Date
+      </button>
+      or
+      <a href="/friends_dates">Cancel</a>
+    </form>
+  </div>
+</div>

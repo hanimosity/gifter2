@@ -13,15 +13,10 @@ class ImportantDatesController < ApplicationController
 
   def create
     @important_date = ImportantDate.new
-    @important_date.reminder = params[:reminder]
-    @important_date.friend_id = params[:friend_id]
-    @important_date.card = params[:card]
-    @important_date.traditions = params[:traditions]
     @important_date.name = params[:name]
-    @important_date.date = params[:date]
 
     if @important_date.save
-      redirect_to "/friends/", :notice => "Important date created successfully."
+      redirect_to "/important_dates", :notice => "Important date created successfully."
     else
       render 'new'
     end
@@ -34,15 +29,10 @@ class ImportantDatesController < ApplicationController
   def update
     @important_date = ImportantDate.find(params[:id])
 
-    @important_date.reminder = params[:reminder]
-    @important_date.friend_id = params[:friend_id]
-    @important_date.card = params[:card]
-    @important_date.traditions = params[:traditions]
     @important_date.name = params[:name]
-    @important_date.date = params[:date]
 
     if @important_date.save
-      redirect_to "/friends/", :notice => "Important date updated successfully."
+      redirect_to "/important_dates", :notice => "Important date updated successfully."
     else
       render 'edit'
     end

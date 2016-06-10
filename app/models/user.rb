@@ -4,9 +4,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_many :friends
- has_many :photos
- has_many :comments
- has_many :likes
- has_many :liked_photos, :through => :likes, :source => :photo
+  has_many :friends, :dependent => :destroy
+  has_many :friends_dates
+  has_many :friends_holidays
 end

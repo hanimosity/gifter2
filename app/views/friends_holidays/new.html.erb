@@ -18,12 +18,13 @@
       <!-- Hidden input for authenticity token to protect from forgery -->
       <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
 
-      <!-- Label and input for card -->
-      <div class="checkbox">
-        <label for="card">
-          <input type="checkbox" id="card" name="card" value="1" <%= "checked" if @friends_holiday.card %>>
-          Card
+      <!-- Label and input for traditions -->
+      <div class="form-group">
+        <label for="traditions" class="control-label">
+          Traditions
         </label>
+
+        <textarea id="traditions" name="traditions" placeholder="Traditions" class="form-control" rows="3"><%= @friends_holiday.traditions %></textarea>
       </div>
 
       <!-- Label and input for reminder -->
@@ -51,6 +52,15 @@
         </label>
 
         <input type="text" id="holiday_id" name="holiday_id" placeholder="Holiday" class="form-control" value="<%= @friends_holiday.holiday_id %>">
+      </div>
+
+      <!-- Label and input for user_id -->
+      <div class="form-group">
+        <label for="user_id" class="control-label">
+          User
+        </label>
+
+        <input type="text" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= @friends_holiday.user_id %>">
       </div>
 
       <button class="btn btn-success">

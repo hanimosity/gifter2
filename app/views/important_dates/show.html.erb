@@ -1,24 +1,12 @@
 <div class="page-header">
-  <h3><%= @important_date.friend.name %>'s <%= @important_date.name %></h3>
+  <h3>Important Date #<%= @important_date.id %></h3>
 </div>
 
 <div class="row">
   <div class="col-md-12">
     <dl class="dl-horizontal">
-      <dt>Date</dt>
-      <dd><%= @important_date.date %></dd>
-
-      <dt>Reminder</dt>
-      <dd><%= @important_date.reminder %></dd>
-
-      <dt>Card</dt>
-      <dd><%= @important_date.card %></dd>
-
-      <dt>Previous gifts</dt>
-      <dd><%= @important_date.previous_gifts %></dd>
-
-      <dt>Traditions</dt>
-      <dd><%= @important_date.traditions %></dd>
+      <dt>Name</dt>
+      <dd><%= @important_date.name %></dd>
 
     </dl>
 

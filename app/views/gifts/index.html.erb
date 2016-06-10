@@ -9,21 +9,25 @@
   <div class="col-md-12">
     <table class="table table-striped table-hover">
       <tr>
-        <th>Important date</th>
+        <th>Friend</th>
+        <th>Friends date</th>
         <th>Friends holiday</th>
         <th>Year given</th>
         <th>Description</th>
         <th>Name</th>
+        <th>User</th>
         <th>Actions</th>
       </tr>
 
       <% @gifts.each do |gift| %>
       <tr>
-        <td><%= gift.important_date_id %></td>
+        <td><%= gift.friend_id %></td>
+        <td><%= gift.friends_date_id %></td>
         <td><%= gift.friends_holiday_id %></td>
         <td><%= gift.year_given %></td>
         <td><%= gift.description %></td>
         <td><%= gift.name %></td>
+        <td><%= gift.user_id %></td>
         <td>
           <a href="/gifts/<%= gift.id %>" class="btn btn-primary">Show</a>
           <a href="/gifts/<%= gift.id %>/edit" class="btn btn-warning">Edit</a>
